@@ -1,0 +1,7 @@
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\bin\Debug\StudyCSharp.exe.config
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\bin\Debug\StudyCSharp.exe
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\bin\Debug\StudyCSharp.pdb
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\obj\Debug\StudyCSharp.csprojAssemblyReference.cache
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\obj\Debug\StudyCSharp.csproj.CoreCompileInputs.cache
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\obj\Debug\StudyCSharp.exe
+E:\GitRoot\CSharp\Study\StudyCSharp\StudyCSharp\obj\Debug\StudyCSharp.pdb
