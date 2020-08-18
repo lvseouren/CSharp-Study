@@ -6,27 +6,42 @@ using System.Threading.Tasks;
 
 namespace StudyCSharp.Scripts.Async
 {
-    public class Coffee
+    public class FoodBase
+    {
+        public FoodBase()
+        {
+            CookLog(this.GetType().Name+"好了！");
+        }
+
+        private void CookLog(string msg)
+        {
+            if (!string.IsNullOrEmpty(msg))
+                Console.WriteLine(msg);
+            Console.WriteLine("当前时间：" + DateTime.Now);
+        }
+    }
+
+    public class Coffee:FoodBase
     {
 
     }
 
-    public class Egg
+    public class Egg:FoodBase
     {
 
     }
 
-    public class Bacon
+    public class Bacon:FoodBase
     {
 
     }
 
-    public class Toast
+    public class Toast:FoodBase
     {
 
     }
 
-    public class Juice
+    public class Juice:FoodBase
     {
 
     }
@@ -38,39 +53,30 @@ namespace StudyCSharp.Scripts.Async
             var startTime = DateTime.Now;
             CookLog("");
             Coffee cup = PourCoffee();
-            CookLog("咖啡好了");
 
             var eggTask = FryEggsAsync(2);
             var baconTask = FryBaconAsync(3);
             var toastTask = ToastBreadAsync(2);
 
             Egg egg = await eggTask;
-            CookLog("鸡蛋好了");
-
             Bacon bacon = await baconTask;
-            CookLog("培根好了");
-
             Toast toast = await toastTask;
             ApplyButter(toast);
             ApplyJam(toast);
-            CookLog("吐司好了");
 
             Juice oj = PourOJ();
-            CookLog("果汁就绪");
-            CookLog("早餐好了！");
-            Console.WriteLine("共计花费时间：" + (DateTime.Now-startTime));
+            CookLog("早餐好了！共计花费时间：" + (DateTime.Now - startTime).Seconds);
         }
 
         private void CookLog(string msg)
         {
-            if(!string.IsNullOrEmpty(msg))
+            if (!string.IsNullOrEmpty(msg))
                 Console.WriteLine(msg);
             Console.WriteLine("当前时间：" + DateTime.Now);
         }
 
         private Juice PourOJ()
         {
-
             return new Juice();
         }
 
