@@ -17,7 +17,7 @@ namespace StudyCSharp.Scripts.Async
         {
             if (!string.IsNullOrEmpty(msg))
                 Console.WriteLine(msg);
-            Console.WriteLine("当前时间：" + DateTime.Now);
+            Console.WriteLine("当前时间：" + DateTime.Now+"\n");
         }
     }
 
@@ -57,12 +57,9 @@ namespace StudyCSharp.Scripts.Async
             var eggTask = FryEggsAsync(2);
             var baconTask = FryBaconAsync(3);
             var toastTask = ToastBreadAsync(2);
+            Console.WriteLine("\n\n");
 
-            Egg egg = await eggTask;
-            Bacon bacon = await baconTask;
-            Toast toast = await toastTask;
-            ApplyButter(toast);
-            ApplyJam(toast);
+            await Task.WhenAll(eggTask, baconTask, toastTask);
 
             Juice oj = PourOJ();
             CookLog("早餐好了！共计花费时间：" + (DateTime.Now - startTime).Seconds);
@@ -77,6 +74,7 @@ namespace StudyCSharp.Scripts.Async
 
         private Juice PourOJ()
         {
+            Console.WriteLine("倒果汁");
             return new Juice();
         }
 
@@ -94,13 +92,16 @@ namespace StudyCSharp.Scripts.Async
         {
             for (int i =0;i<v;i++)
             {
-                await Task.Delay(2000);
+                //await Task.Delay(2000);
                 Console.WriteLine("把一块面包放到吐司机里");
             }
             Console.WriteLine("开始做吐司");
             await Task.Delay(3000);
             Console.WriteLine("把吐司从吐司机里拿出来");
-            return new Toast();
+            var toast = new Toast();
+            ApplyButter(toast);
+            ApplyJam(toast);
+            return toast;
         }
 
         private async Task<Bacon> FryBaconAsync(int v)
