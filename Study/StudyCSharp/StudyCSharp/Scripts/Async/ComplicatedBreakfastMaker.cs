@@ -59,7 +59,24 @@ namespace StudyCSharp.Scripts.Async
             var toastTask = ToastBreadAsync(2);
             Console.WriteLine("\n\n");
 
-            await Task.WhenAll(eggTask, baconTask, toastTask);
+            var breakfastTasks = new List<Task> { eggTask, baconTask, toastTask };
+            while(breakfastTasks.Count>0)
+            {
+                Task finishedTask = await Task.WhenAny(breakfastTasks);
+                if(finishedTask == eggTask)
+                {
+                    Console.WriteLine("eggs are ready");
+                }
+                else if(finishedTask == baconTask)
+                {
+                    Console.WriteLine("bacon is ready");
+                }
+                else if(finishedTask == toastTask)
+                {
+                    Console.WriteLine("toast is ready");
+                }
+                breakfastTasks.Remove(finishedTask);
+            }
 
             Juice oj = PourOJ();
             CookLog("早餐好了！共计花费时间：" + (DateTime.Now - startTime).Seconds);
